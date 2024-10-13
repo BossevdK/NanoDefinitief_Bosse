@@ -8,7 +8,7 @@ def display_menu():
     print("3. Search for entries by keyword")
     print("4. Delete an entry by number")
     print("5. Exit")
-#This part of the script makes the options menu for the user to choose between different actions
+#This is the menu that the user sees
 
 def add_entry(entries, filename="diary_entries.txt"):
     date = input("Enter Date of Entry (DD-MM-YYYY): ")
@@ -40,6 +40,7 @@ def search_entries(entries):
             found = True
     if not found:
         print("No diary entries found with that keyword.")
+#This part of the script makes it possible for the user to search in their entries by typing in keywords
 
 def delete_entry(entries, filename="diary_entries.txt"):
     view_entries(entries)
@@ -53,11 +54,13 @@ def delete_entry(entries, filename="diary_entries.txt"):
             print("Invalid entry number.")
     except ValueError:
         print("Please enter a valid entry number.")
+#This part of the script makes it possible for the user to delete entries in the diary
 
 def save_entry(entries, filename="diary_entries.txt"):
     with open(filename, "w") as file:
         json.dump(entries, file, indent=4)
     print("Diary entry saved.")
+#This script saves the changes made by the user (Deleted or added entries
 
 def load_entries(filename="diary_entries.txt", FileNotFoundError=None):
     try:
@@ -69,6 +72,7 @@ def load_entries(filename="diary_entries.txt", FileNotFoundError=None):
     except json.JSONDecodeError:
         print("Error reading diary entries")
         return []
+#This script runs on start of the program and loads all the entries for the user
 
 def diary_main():
     entries = load_entries() #Make an empty list to add entries
@@ -89,6 +93,7 @@ def diary_main():
             break #Exit the loop
         else:
             print("Invalid choice. Please choose again.")
+#This is the main menu and correspondents with the input of the user
 
 if __name__ == "__main__":
     diary_main()
