@@ -62,7 +62,7 @@ def save_entry(entries, filename="diary_entries.txt"):
     print("Diary entry saved.")
 #This script saves the changes made by the user (Deleted or added entries
 
-def load_entries(filename="diary_entries.txt", FileNotFoundError=None):
+def load_entries(filename="diary_entries.txt"):
     try:
         with open(filename, "r") as file:
             return json.load(file)
